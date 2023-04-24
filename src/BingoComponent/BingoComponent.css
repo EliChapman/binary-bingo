@@ -1,0 +1,163 @@
+#bingo-container {
+    position: relative;
+    top: calc(-1 * (10px + 2vmin));
+}
+
+#bingo-text {
+    width: fit-content;
+    font-size: calc(32px + 30 * ((100vw - 320px) / 2000));
+    color: #afb9bd;
+    border: calc(2px + 5 * ((100vw - 320px) / 2000)) solid #4ca1bb;
+    border-radius: 10px;
+    margin: auto;
+    margin-bottom: 10vh;
+    padding: 1vw;
+}
+
+#bingo-text span {
+    color: #42e0cb;
+    font-family: Roboto;
+}
+
+#answer {
+    width: fit-content;
+    font-size: calc(32px + 30 * ((100vw - 320px) / 2000));
+    color: #d1d1d1;
+    margin: auto;
+    margin-top: 5vh;
+    padding: 1vw;
+}
+
+.bingo-button {
+    aspect-ratio: 16/5;
+    width: 35vw;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    font-weight: 500;
+    font-size: calc(16px + 30 * ((100vw - 320px) / 2000));
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+    7px 7px 20px 0px rgba(0,0,0,.1),
+    4px 4px 5px 0px rgba(0,0,0,.1);
+    outline: none;
+    background: rgb(18, 165, 190);
+    background: linear-gradient(0deg, rgb(16, 151, 175) 0%, rgb(0, 106, 133) 100%);
+    line-height: 42px;
+    padding: 0;
+    border: none;
+}
+
+.bingo-button span {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+  
+.bingo-button:before, .bingo-button:after {
+    position: absolute;
+    content: "";
+    right: 0;
+    top: 0;
+    background: rgb(0, 116, 136);
+    transition: all 0.3s ease;
+}
+
+.bingo-button:before {
+    height: 0%;
+    width: 2px;
+}
+
+.bingo-button:after {
+    width: 0%;
+    height: 2px;
+}
+
+.bingo-button:hover{
+    background: transparent;
+    box-shadow: none;
+}
+
+.bingo-button:hover:before {
+    height: 100%;
+}
+
+.bingo-button:hover:after {
+    width: 100%;
+}
+
+.bingo-button span:hover{
+    color: rgb(2, 180, 251);
+}
+
+.bingo-button span:before, .bingo-button span:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    background: rgb(0, 176, 182);
+    transition: all 0.3s ease;
+}
+
+.bingo-button span:before {
+    width: 2px;
+    height: 0%;
+}
+
+.bingo-button span:after {
+    width: 0%;
+    height: 2px;
+}
+
+.bingo-button span:hover:before {
+    height: 100%;
+}
+
+.bingo-button span:hover:after {
+    width: 100%;
+}
+
+.clicked {
+    -webkit-animation-name: growAnimation;
+    -webkit-animation-duration: .2s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: forwards;
+    animation-name: growAnimation;
+    animation-duration: .2s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+@keyframes growAnimation {
+    from {
+      -webkit-transform: rotate(0deg) scale(.95) skew(0deg) translate(0);
+    }
+    to {
+      -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(0);
+    }
+  }
+
+*.unselectable {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+ 
+    /*
+      Introduced in IE 10.
+      See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+    */
+    -ms-user-select: none;
+    user-select: none;
+ }
