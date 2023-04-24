@@ -34,13 +34,28 @@ const toBingo = (num) => {
     return(bingo_letter + " " + dec2bin(num))
 }
 
+const ResetNumbers = (setNumber, setAnswer) => {
+    const element = document.getElementById('reset-button')
+    element.classList.remove('clicked'); // reset animation
+    void element.offsetWidth; // trigger reflow
+    element.classList.add('clicked'); // start animation
+
+    localStorage.setItem('used-numbers', "")
+    setNumber(toBingo(localStorage.getItem('used-numbers').split(" ").slice(-2, -1)))
+    setAnswer("")
+}
+
 const ToggleAnswer = (ToggleShowAnswer, show_answer, show = null) => {
     if (show == null) {
         ToggleShowAnswer(!show_answer) 
+        const element = document.getElementById('show-answer')
+
+        element.classList.remove('clicked'); // reset animation
+        void element.offsetWidth; // trigger reflow
+        element.classList.add('clicked'); // start animation
     } else {
         ToggleShowAnswer(show)
     }
-    console.log(show_answer)
 }
 
 const GenerateNumber = (setNumber, setAnswer, ToggleShowAnswer, show_answer) => {
@@ -90,6 +105,9 @@ const BingoComponent = (props) => {
             <br />
             <div id="show-answer" className='answer-button' onClick={() => ToggleAnswer(ToggleShowAnswer, show_answer)}>
                 <span unselectable='on' className='unselectable'>Show Answer</span>
+            </div>
+            <div id="reset-button" className="reset-button" onClick={() => ResetNumbers(setNumber, setAnswer)}>
+                <span unselectable='on' className='unselectable'> Reset </span>
             </div>
         </div>
     );
