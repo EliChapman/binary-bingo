@@ -34,11 +34,16 @@ const toBingo = (num) => {
     return(bingo_letter + " " + dec2bin(num))
 }
 
-const UpdateAnswer = (setAnswer, num) => {
-    setAnswer(num)
+const ToggleAnswer = (ToggleShowAnswer, show_answer, show = null) => {
+    if (show == null) {
+        ToggleShowAnswer(!show_answer) 
+    } else {
+        ToggleShowAnswer(show)
+    }
+    console.log(show_answer)
 }
 
-const GenerateNumber = (setNumber, setAnswer) => {
+const GenerateNumber = (setNumber, setAnswer, ToggleShowAnswer, show_answer) => {
     var found_number = false;
     const element = document.getElementById('main-button')
 
@@ -61,10 +66,8 @@ const GenerateNumber = (setNumber, setAnswer) => {
             found_number = true;
         }
     }
-    setAnswer(" ")
-    var timer = setTimeout(function() {
-        UpdateAnswer(setAnswer, chosen_number)
-    }, 1000)
+    setAnswer(chosen_number)
+    ToggleAnswer(ToggleShowAnswer, show_answer, false)
 }
 
 const BingoComponent = (props) => {
@@ -72,17 +75,21 @@ const BingoComponent = (props) => {
     localStorage.setItem('max', props.max);
     localStorage.setItem('min', props.min);
     const [answer_text, setAnswer] = useState("")
+    const [show_answer, ToggleShowAnswer] = useState(false);
 
     return(
         <div className="bingo-container">
             <div id="bingo-text" unselectable="on" className="unselectable">
                 <span>{bingo_number[0]}</span>{bingo_number.substring(1)}
+                {" "}
+                <span>{show_answer ? answer_text : ""}</span>
             </div>
-            <div id="main-button" className="bingo-button" onClick={() => GenerateNumber(setNumber, setAnswer)}>
+            <div id="main-button" className="bingo-button" onClick={() => GenerateNumber(setNumber, setAnswer, ToggleShowAnswer, show_answer)}>
                 <span unselectable="on" className="unselectable">Roll Number</span>
             </div>
-            <div id="answer" unselectable="on" className="unselectable">
-                {answer_text}
+            <br />
+            <div id="show-answer" className='answer-button' onClick={() => ToggleAnswer(ToggleShowAnswer, show_answer)}>
+                <span unselectable='on' className='unselectable'>Show Answer</span>
             </div>
         </div>
     );

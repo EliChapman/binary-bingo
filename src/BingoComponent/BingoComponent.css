@@ -12,6 +12,7 @@
     margin: auto;
     margin-bottom: 10vh;
     padding: 1vw;
+    margin-top: 5vh;
 }
 
 #bingo-text span {
@@ -24,7 +25,6 @@
     font-size: calc(32px + 30 * ((100vw - 320px) / 2000));
     color: #d1d1d1;
     margin: auto;
-    margin-top: 5vh;
     padding: 1vw;
 }
 
@@ -33,7 +33,6 @@
     width: 35vw;
     color: #fff;
     border-radius: 5px;
-    padding: 10px 25px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -51,7 +50,6 @@
     background: rgb(18, 165, 190);
     background: linear-gradient(0deg, rgb(16, 151, 175) 0%, rgb(0, 106, 133) 100%);
     line-height: 42px;
-    padding: 0;
     border: none;
 }
 
@@ -160,4 +158,31 @@
     */
     -ms-user-select: none;
     user-select: none;
- }
+}
+
+.answer-button {
+    aspect-ratio: 16/5;
+    width: 20vw;
+    background-color: #4CAF50; /* Green */
+    color: white;
+    font-size: calc(12px + 20 * ((100vw - 320px) / 2000));
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 2vh;
+    border: 2px solid #4CAF50;
+    transition: all .3s ease;
+}
+
+.answer-button span {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.answer-button:hover {
+    background-color: transparent;
+}
