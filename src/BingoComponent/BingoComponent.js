@@ -4,6 +4,9 @@ import './BingoComponent.css';
 if (localStorage.getItem('used-numbers') == null) {
     localStorage.setItem('used-numbers', "");
 }
+if (localStorage.getItem('answer') == null) {
+    localStorage.setItem('answer', "");
+}
 
 function dec2bin(dec) {
     var output =  (dec >>> 0).toString(2);
@@ -34,7 +37,7 @@ const toBingo = (num) => {
     return(bingo_letter + " " + dec2bin(num))
 }
 
-const ResetNumbers = (setNumber, setAnswer) => {
+const ResetNumbers = (setNumber) => {
     const element = document.getElementById('reset-button')
     element.classList.remove('clicked'); // reset animation
     void element.offsetWidth; // trigger reflow
@@ -42,7 +45,7 @@ const ResetNumbers = (setNumber, setAnswer) => {
 
     localStorage.setItem('used-numbers', "")
     setNumber(toBingo(localStorage.getItem('used-numbers').split(" ").slice(-2, -1)))
-    setAnswer("")
+    localStorage.setItem("answer", "")
 }
 
 const ToggleAnswer = (ToggleShowAnswer, show_answer, show = null) => {
@@ -58,7 +61,7 @@ const ToggleAnswer = (ToggleShowAnswer, show_answer, show = null) => {
     }
 }
 
-const GenerateNumber = (setNumber, setAnswer, ToggleShowAnswer, show_answer) => {
+const GenerateNumber = (setNumber, ToggleShowAnswer, show_answer) => {
     var found_number = false;
     const element = document.getElementById('main-button')
 
@@ -81,7 +84,7 @@ const GenerateNumber = (setNumber, setAnswer, ToggleShowAnswer, show_answer) => 
             found_number = true;
         }
     }
-    setAnswer(chosen_number)
+    localStorage.setItem("answer", chosen_number)
     ToggleAnswer(ToggleShowAnswer, show_answer, false)
 }
 
@@ -89,7 +92,6 @@ const BingoComponent = (props) => {
     const [bingo_number, setNumber] = useState(toBingo(localStorage.getItem('used-numbers').split(" ").slice(-2, -1)))
     localStorage.setItem('max', props.max);
     localStorage.setItem('min', props.min);
-    const [answer_text, setAnswer] = useState("")
     const [show_answer, ToggleShowAnswer] = useState(false);
 
     return(
@@ -97,16 +99,16 @@ const BingoComponent = (props) => {
             <div id="bingo-text" unselectable="on" className="unselectable">
                 <span>{bingo_number[0]}</span>{bingo_number.substring(1)}
                 {" "}
-                <span>{show_answer ? answer_text : ""}</span>
+                <span>{show_answer ? localStorage.getItem("answer") : ""}</span>
             </div>
-            <div id="main-button" className="bingo-button" onClick={() => GenerateNumber(setNumber, setAnswer, ToggleShowAnswer, show_answer)}>
+            <div id="main-button" className="bingo-button" onClick={() => GenerateNumber(setNumber, ToggleShowAnswer, show_answer)}>
                 <span unselectable="on" className="unselectable">Roll Number</span>
             </div>
             <br />
             <div id="show-answer" className='answer-button' onClick={() => ToggleAnswer(ToggleShowAnswer, show_answer)}>
                 <span unselectable='on' className='unselectable'>Show Answer</span>
             </div>
-            <div id="reset-button" className="reset-button" onClick={() => ResetNumbers(setNumber, setAnswer)}>
+            <div id="reset-button" className="reset-button" onClick={() => ResetNumbers(setNumber)}>
                 <span unselectable='on' className='unselectable'> Reset </span>
             </div>
         </div>
