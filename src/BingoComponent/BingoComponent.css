@@ -10,14 +10,18 @@
     border: calc(2px + 5 * ((100vw - 320px) / 2000)) solid #4ca1bb;
     border-radius: 10px;
     margin: auto;
-    margin-bottom: 10vh;
+    margin-bottom: 5vh;
     padding: 1vw;
-    margin-top: 5vh;
+    margin-top: 3vh;
 }
 
 #bingo-text span {
     color: #42e0cb;
     font-family: Roboto;
+}
+
+#answer-container {
+    margin-bottom: 3vh
 }
 
 #answer {
@@ -26,6 +30,8 @@
     color: #d1d1d1;
     margin: auto;
     padding: 1vw;
+    opacity: 0;
+    transition: opacity .1s ease-in
 }
 
 .bingo-button {
