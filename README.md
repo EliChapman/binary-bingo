@@ -1,70 +1,22 @@
-# Getting Started with Create React App
+# Binary Bingo
+## Project Description
+Binary Bingo is a fun and educational game created by the WRHS Computer Science Honors Society that combines the excitement of bingo with the logic of binary numbers. This game is designed to help players understand binary numbers in a fun and engaging way.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## How to Play
+Each player is given a bingo card filled with Base 10 numbers. A caller will randomly generate binary numbers, which players have to convert to Base 10. If a player has that number on their card, they can mark it off. The first player to mark off a complete row or column wins!
 
-## Available Scripts
+## Installation
+To install Binary Bingo, follow these steps:
 
-In the project directory, you can run:
+1. Clone the repository: `git clone https://github.com/EliChapman/binary-bingo`
+2. Navigate to the project directory: `cd binary-bingo`
+3. Install the required dependencies: `npm install`
 
-### `npm start`
+## Usage
+To start the game, run the following command in your terminal: `npm start`. Pressing the `Generate` button will generate a binary number and the `Show Answer` button will display the generated number in Base 10. All rolled numbers will be saved to the `Called Numbers` element and you can reset the list with the `Reset` Button. Only numbers 1-75 will be called in accordance with standard Bingo proceedure. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## License
+Binary Bingo is licensed under the MIT License. See `LICENSE` for more information.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contact
+If you have any questions or feedback, please open an issue on this repository.

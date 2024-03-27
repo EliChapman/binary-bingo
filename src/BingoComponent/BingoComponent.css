@@ -15,7 +15,7 @@
     border: calc(2px + 5 * ((100vw - 320px) / 2000)) solid #4ca1bb;
     border-radius: 10px;
     margin: auto;
-    margin-bottom: 5vh;
+    margin-bottom: 3vh;
     padding: 1vw;
     margin-top: 3vh;
 }
