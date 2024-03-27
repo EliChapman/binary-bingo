@@ -1,6 +1,11 @@
 #bingo-container {
-    position: relative;
-    top: calc(-1 * (10px + 2vmin));
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - ((10px + 2vmin) * 8));
+  justify-content: center;
+  align-items: center;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 #bingo-text {
@@ -191,35 +196,5 @@
 }
 
 .answer-button:hover {
-    background-color: transparent;
-}
-
-.reset-button {
-    aspect-ratio: 14/5;
-    width: 12vw;
-    background-color: #696969; /* Green */
-    color: white;
-    font-size: calc(12px + 20 * ((100vw - 320px) / 2000));
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    border: 2px solid #696969;
-    transition: all .3s ease;
-    position: absolute;
-    top: 80vh;
-    left: 80vw;
-    border-radius: 5px;
-}
-
-.reset-button span {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-}
-
-.reset-button:hover {
     background-color: transparent;
 }
