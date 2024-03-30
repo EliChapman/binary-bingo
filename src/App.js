@@ -2,6 +2,7 @@ import './App.css';
 import BingoComponent from './BingoComponent/BingoComponent';
 import NumberHistoryComponent from './NumberHistoryComponent/NumberHistoryComponent';
 import { LocalStorageProvider } from './LocalStorageContext';
+import TimerComponent from './TimerComponent/TimerComponent';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <div id='container'>
           <NumberHistoryComponent />
           <BingoComponent max="75" min="1"/>
+          <TimerComponent />
         </div>
         <div id='credits'>
           <a href="http://wrhs.net/cshs" className='app-link' target="_blank" rel="noopener noreferrer">Washburn Rural Highschool CSHS</a>

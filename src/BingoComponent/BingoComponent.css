@@ -6,6 +6,8 @@
   align-items: center;
   margin-right: auto;
   margin-left: auto;
+  grid-column-start: 2;
+  grid-column-end: 3;
 }
 
 #bingo-text {

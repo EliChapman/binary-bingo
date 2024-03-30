@@ -1,25 +1,32 @@
 #number-history-container {
-    height: 70vh;
-    max-height: 70vh;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    display: grid;
+    grid-template-rows: 1fr .5fr 3fr 1fr;
+    grid-template-columns: 1fr;
     background-color: #444a57;
     border-radius: 20px;
-    position: absolute;
-    left: 2vw;
     overflow-y: hidden;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    overflow-x: hidden;
+}
+
+/* Center components in the grid */
+#number-history-header, #number-history-sorting, #sort-label, #reset-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #number-history-header {
-    padding-left: 5px;
-    padding-right: 5px;
-    font-size: 1.5em;
-    margin-left: auto;
-    margin-right: auto;
     color: #42e0cb;
-    margin-bottom: 2%;
+    grid-row: 1;
+    margin-block: 0;
 }
 
 #number-history-sorting {
-    margin-bottom: 2%;
+    grid-row: 2;
 }
 
 #sort-label {
@@ -30,14 +37,12 @@
 #sort-button {
     background-color: #949393;
     color: white;
-    font-size: calc(6px + 20 * ((100vw - 320px) / 2000));
     text-align: center;
     text-decoration: none;
-    display: inline-block;
     border: 2px solid #949393;
     transition: all .3s ease;
     border-radius: 5px;
-
+    margin-left: .5vw;
 }
 
 #sort-button:hover {
@@ -50,9 +55,9 @@
     margin: 0;
     color: #afb9bd;
     overflow-y: scroll;
-    height: 60%;
-    margin-bottom: 10%;
+    /* The Height needs fixed */
     font-size: larger;
+    grid-row: 3;
 }
 
 #number-history-list::-webkit-scrollbar {
@@ -60,25 +65,32 @@
 }
 
 .number-history-point {
-    padding-top: 2.5px;
-    padding-bottom: 2.5px;
+    padding-top: 1%;
+    padding-bottom: 1%;
 }
 
-.reset-button {
+.number-history-point span {
+    color: #42e0cb;
+    font-family: Roboto;
+}
+
+#reset-button-container {
+    grid-row: 4;
+}
+
+#reset-button {
     aspect-ratio: 14/5;
-    width: 12vw;
     background-color: #696969; /* Green */
     color: white;
-    font-size: calc(12px + 20 * ((100vw - 320px) / 2000));
     text-align: center;
     text-decoration: none;
-    display: inline-block;
     border: 2px solid #696969;
     transition: all .3s ease;
     border-radius: 5px;
+    width: 75%;
 }
 
-.reset-button span {
+#reset-button span {
     position: relative;
     display: flex;
     justify-content: center;
@@ -87,6 +99,6 @@
     height: 100%;
 }
 
-.reset-button:hover {
+#reset-button:hover {
     background-color: transparent;
 }

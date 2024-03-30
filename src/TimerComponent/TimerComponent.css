@@ -1,0 +1,58 @@
+#timer-component {
+    display: grid;
+    grid-template-rows: 1fr 2fr 1fr;
+    grid-template-columns: 1fr;
+    background-color: #444a57;
+    border-radius: 20px;
+    overflow-y: hidden;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    overflow-x: hidden;
+}
+
+/* Center Each Element in their row */
+#timer-header, #time-left, #timer-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#timer-header {
+    grid-row: 1;
+    color: #afb9bd;
+}
+  
+#time-left {
+    grid-row: 2;
+    color: #42e0cb;
+    font-size: 2em;
+}
+
+#timer-button-container {
+    grid-row: 3;
+}
+
+#timer-button {
+    aspect-ratio: 14/5;
+    background-color: #696969;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border: 2px solid #696969;
+    transition: all .3s ease;
+    border-radius: 5px;
+    width: 75%;
+}
+
+#timer-button span {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+#timer-button:hover {
+    background-color: transparent;
+}

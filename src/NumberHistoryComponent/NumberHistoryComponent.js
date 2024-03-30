@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './NumberHistoryComponent.css';
 import { useLocalStorageContext } from '../LocalStorageContext';
+import { toBingo } from '../BingoComponent/BingoComponent';
 
 const NumberHistoryComponent = () => {
     const [history, setHistory] = useState([]);
@@ -43,11 +44,13 @@ const NumberHistoryComponent = () => {
             </div>
             <ul id="number-history-list" >
                 {history.map((num, index) => (
-                    <li className="number-history-point" key={index}>{num}</li>
+                    <li className="number-history-point" key={index}> <span>{toBingo(num).substring(0,1).concat((num < 10) ? "\u00A0" : "")}</span> {num}</li>
                 ))}
             </ul>
-            <div id="reset-button" className="reset-button" onClick={() => ResetNumbers()}>
-                <span unselectable='on' className='unselectable'> Reset </span>
+            <div id="reset-button-container">
+                <button id="reset-button" onClick={() => ResetNumbers()}>
+                    <span unselectable='on' className='unselectable'> Reset </span>
+                </button>
             </div>
         </div>
     );

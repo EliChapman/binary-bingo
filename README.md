@@ -13,7 +13,7 @@ To install Binary Bingo, follow these steps:
 3. Install the required dependencies: `npm install`
 
 ## Usage
-To start the game, run the following command in your terminal: `npm start`. Pressing the `Generate` button will generate a binary number and the `Show Answer` button will display the generated number in Base 10. All rolled numbers will be saved to the `Called Numbers` element and you can reset the list with the `Reset` Button. Only numbers 1-75 will be called in accordance with standard Bingo proceedure. 
+To start the game, run the following command in your terminal: `npm run start`. Pressing the `Generate` button will generate a binary number and the `Show Answer` button will display the generated number in Base 10. All rolled numbers will be saved to the `Called Numbers` element and you can reset the list with the `Reset` Button. Only numbers 1-75 will be called in accordance with standard Bingo proceedure. 
 
 ## License
 Binary Bingo is licensed under the MIT License. See `LICENSE` for more information.

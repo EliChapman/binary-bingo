@@ -19,7 +19,8 @@ body {
 }
 
 #container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
   width: 100%;
   height: calc(100vh - ((10px + 2vmin) * 8));
 }

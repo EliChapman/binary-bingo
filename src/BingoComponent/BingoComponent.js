@@ -42,8 +42,8 @@ const BingoComponent = (props) => {
     localStorage.setItem('max', props.max);
     localStorage.setItem('min', props.min);
     const [answer_text, setAnswer] = useState(localStorage.getItem('used-numbers').split(" ").slice(-2, -1))
-    const [show_answer, ToggleShowAnswer] = useState(false);
     const { triggerUpdate, resetTrigger } = useLocalStorageContext();
+    const { ToggleShowAnswer, showAnswer, isTimerActive, setDuration } = useLocalStorageContext();
 
     useEffect(() => {
         if (resetTrigger >= 1) {
@@ -60,9 +60,9 @@ const BingoComponent = (props) => {
         }
     }, [resetTrigger]); // Re-run whenever resetTrigger changes
     
-    const ToggleAnswer = (ToggleShowAnswer, show_answer, show = null) => {
+    const ToggleAnswer = (show = null) => {
         if (show == null) {
-            ToggleShowAnswer(!show_answer) 
+            ToggleShowAnswer() 
             const element = document.getElementById('show-answer')
     
             element.classList.remove('clicked'); // reset animation
@@ -70,11 +70,15 @@ const BingoComponent = (props) => {
             element.classList.add('clicked'); // start animation
             triggerUpdate();
         } else {
-            ToggleShowAnswer(show)
+            if (showAnswer === show) {
+                return;
+            } else {
+                ToggleShowAnswer(show)
+            }
         }
     }
     
-    const GenerateNumber = async (setNumber, setAnswer, ToggleShowAnswer, show_answer) => {
+    const GenerateNumber = async () => {
         var found_number = false;
         const element = document.getElementById('main-button')
     
@@ -104,7 +108,7 @@ const BingoComponent = (props) => {
             }
         
             // Make answer invisible
-            ToggleAnswer(ToggleShowAnswer, show_answer, false)
+            ToggleAnswer(false)
         
             const loadingDigits = [];
         
@@ -118,8 +122,11 @@ const BingoComponent = (props) => {
             // Wait 0.1 seconds before setting the answer value
             setTimeout(() => {
                 setAnswer(chosen_number);
+                if (isTimerActive) {
+                    setDuration(10);
+                }
             }, 100);
-        }, 100);
+        }, 150);
     }
 
     return(
@@ -128,13 +135,13 @@ const BingoComponent = (props) => {
                 <span>{bingo_number[0]}</span>{bingo_number.substring(1)}
             </div>
             <div id="answer-container" unselectable="on" className="unselectable">
-                <span id="answer" style={{ opacity: show_answer ? 1 : 0 }}>{answer_text}</span>
+                <span id="answer" style={{ opacity: showAnswer ? 1 : 0 }}>{answer_text}</span>
             </div>
-            <div id="main-button" className="bingo-button" onClick={() => GenerateNumber(setNumber, setAnswer, ToggleShowAnswer, show_answer)}>
+            <div id="main-button" className="bingo-button" onClick={() => GenerateNumber()}>
                 <span unselectable="on" className="unselectable">Roll Number</span>
             </div>
             <br />
-            <div id="show-answer" className='answer-button' onClick={() => ToggleAnswer(ToggleShowAnswer, show_answer)}>
+            <div id="show-answer" className='answer-button' onClick={() => ToggleAnswer()}>
                 <span unselectable='on' className='unselectable'>Show Answer</span>
             </div>
         </div>
@@ -142,3 +149,4 @@ const BingoComponent = (props) => {
 }
 
 export default BingoComponent;
+export { toBingo };
