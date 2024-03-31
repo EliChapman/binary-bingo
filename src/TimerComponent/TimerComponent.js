@@ -3,7 +3,7 @@ import './TimerComponent.css';
 import { useLocalStorageContext } from '../LocalStorageContext';
 
 const TimerComponent = () => {
-    const { ToggleShowAnswer, timerDuration, isTimerActive, ToggleTimer, setDuration } = useLocalStorageContext();
+    const { ToggleShowAnswer, timerDuration, isTimerActive, ToggleTimer, setDuration, triggerUpdate } = useLocalStorageContext();
     const [timeLeft, setTimeLeft] = useState(timerDuration);
 
     const changeTimerState = () => {
@@ -26,6 +26,7 @@ const TimerComponent = () => {
         }
         else if (timeLeft === 0) {
             ToggleShowAnswer(true);
+            triggerUpdate(true); // Update history (show current number
             setDuration(-1);
             return;
         }
@@ -33,7 +34,7 @@ const TimerComponent = () => {
         const timerId = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
 
         return () => clearTimeout(timerId);
-    }, [timeLeft, isTimerActive, ToggleShowAnswer, setDuration, timerDuration]);
+    }, [timeLeft, isTimerActive, ToggleShowAnswer, setDuration, timerDuration, triggerUpdate]);
 
     return (
         <div id="timer-component">

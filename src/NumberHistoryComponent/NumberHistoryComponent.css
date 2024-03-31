@@ -2,7 +2,7 @@
     grid-column-start: 1;
     grid-column-end: 2;
     display: grid;
-    grid-template-rows: 1fr .5fr 3fr 1fr;
+    grid-template-rows: .6fr .4fr 3fr 1fr;
     grid-template-columns: 1fr;
     background-color: #444a57;
     border-radius: 20px;
@@ -22,11 +22,13 @@
 #number-history-header {
     color: #42e0cb;
     grid-row: 1;
+    align-self: end;
     margin-block: 0;
 }
 
 #number-history-sorting {
     grid-row: 2;
+    align-self: start;
 }
 
 #sort-label {

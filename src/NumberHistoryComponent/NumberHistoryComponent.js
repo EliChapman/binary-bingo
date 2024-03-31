@@ -5,7 +5,7 @@ import { toBingo } from '../BingoComponent/BingoComponent';
 
 const NumberHistoryComponent = () => {
     const [history, setHistory] = useState([]);
-    const { triggerUpdate, ResetNumbers } = useLocalStorageContext();
+    const { updateTrigger, ResetNumbers, triggerUpdate } = useLocalStorageContext();
     const [sortIndex, setSortIndex] = useState(0);
     const sortTypes = ["Recent", "Value"];
 
@@ -20,9 +20,14 @@ const NumberHistoryComponent = () => {
     }
 
     useEffect(() => {
-        const fetchHistory = () => {
+        const fetchHistory = (remove_current = true) => {
             const storedHistory = localStorage.getItem('used-numbers');
             let historyArray = storedHistory ? storedHistory.trim().split(" ").filter(num => num !== "") : [];
+            
+            if (!updateTrigger[0]) {
+                historyArray.pop();
+            }
+            
             if (sortIndex === 0) {
                 historyArray.reverse();
             } else {
@@ -32,7 +37,7 @@ const NumberHistoryComponent = () => {
         };
 
         fetchHistory();
-    }, [triggerUpdate]); // Re-fetch whenever triggerUpdate changes
+    }, [updateTrigger, sortIndex]); // Re-fetch whenever updateTrigger changes
 
     // Step 5: Render History
     return (

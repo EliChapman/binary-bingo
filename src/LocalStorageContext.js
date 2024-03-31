@@ -5,7 +5,7 @@ const LocalStorageContext = createContext();
 export const useLocalStorageContext = () => useContext(LocalStorageContext);
 
 export const LocalStorageProvider = ({ children }) => {
-    const [updateTrigger, setUpdateTrigger] = useState(0);
+    const [updateTrigger, setUpdateTrigger] = useState([false, 0]);
     const [resetTrigger, setResetTrigger] = useState(0);
     const [isTimerActive, setIsTimerActive] = useState(false);
     const [timerDuration, setTimerDuration] = useState(-1); // Default duration
@@ -13,7 +13,7 @@ export const LocalStorageProvider = ({ children }) => {
 
     const ResetNumbers = () => setResetTrigger(current => current + 1);
 
-    const triggerUpdate = () => setUpdateTrigger(current => current + 1);
+    const triggerUpdate = (showCurrent = false) => setUpdateTrigger(current => [showCurrent, current[1] + 1]);
 
     const ToggleTimer = (value=null) => setIsTimerActive(current => value==null ? !current : value);
 
@@ -23,7 +23,8 @@ export const LocalStorageProvider = ({ children }) => {
 
     return (
         <LocalStorageContext.Provider value={{
-            triggerUpdate, 
+            triggerUpdate,
+            updateTrigger, 
             ResetNumbers, 
             resetTrigger, 
             isTimerActive, 
