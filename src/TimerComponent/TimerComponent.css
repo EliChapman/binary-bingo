@@ -1,3 +1,4 @@
+/* A grid display is used to ensure consistent display */
 #timer-component {
     display: grid;
     grid-template-rows: 1fr 2fr 1fr;
@@ -32,6 +33,7 @@
     grid-row: 3;
 }
 
+/* Is this a good aspect ratio? */
 #timer-button {
     aspect-ratio: 14/5;
     background-color: #696969;
@@ -53,6 +55,7 @@
     height: 100%;
 }
 
+/* Cool inversion hover effect */
 #timer-button:hover {
     background-color: transparent;
 }

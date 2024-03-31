@@ -4,42 +4,48 @@ import { useLocalStorageContext } from '../LocalStorageContext';
 import { toBingo } from '../BingoComponent/BingoComponent';
 
 const NumberHistoryComponent = () => {
-    const [history, setHistory] = useState([]);
-    const { updateTrigger, ResetNumbers, triggerUpdate } = useLocalStorageContext();
-    const [sortIndex, setSortIndex] = useState(0);
-    const sortTypes = ["Recent", "Value"];
+    const [history, setHistory] = useState([]); // State variable tracking the history of called numbers
+    const { updateTrigger, ResetNumbers, triggerUpdate } = useLocalStorageContext(); // Get a bunch of stuff from the context
+    const [sortIndex, setSortIndex] = useState(0); // State variable tracking the type of sorting, represented by a number
+    const sortTypes = ["Recent", "Value"]; // Array of sorting types
 
+    // Change Sorting
     const changeSort = () => {
         const element = document.getElementById('sort-button')
         element.classList.remove('clicked'); // reset animation
-        void element.offsetWidth; // trigger reflow
+        void element.offsetWidth; // ???
         element.classList.add('clicked'); // start animation
 
-        setSortIndex(value => value === 0 ? 1 : 0);
-        triggerUpdate();
+        setSortIndex(value => value === 0 ? 1 : 0); // Switch between 0 and 1 for the sorting types
+        triggerUpdate(); // trigger an update to the history to reflect the new sorting
     }
 
     useEffect(() => {
-        const fetchHistory = (remove_current = true) => {
+        // Why is this in a function? It is called immeadiatley, and it isn't async so there's no point
+        const fetchHistory = () => {
             const storedHistory = localStorage.getItem('used-numbers');
+            // Split the stored history into an array, remove any empty strings
             let historyArray = storedHistory ? storedHistory.trim().split(" ").filter(num => num !== "") : [];
             
+            // If the current number is not to be shown, remove it from the history
             if (!updateTrigger[0]) {
                 historyArray.pop();
             }
             
+            // Sort the history based on the sortIndex
             if (sortIndex === 0) {
                 historyArray.reverse();
             } else {
                 historyArray.sort((a, b) => a - b);
             }
+
             setHistory(historyArray);
         };
 
-        fetchHistory();
+        fetchHistory(); // Call the unnessecarily functional function
     }, [updateTrigger, sortIndex]); // Re-fetch whenever updateTrigger changes
 
-    // Step 5: Render History
+    // Render Called Numbers List
     return (
         <div id="number-history-container">
             <h2 id="number-history-header">Called Numbers</h2>

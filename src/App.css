@@ -1,3 +1,5 @@
+/* Main CSS file */
+
 body {
   background-color: #282c34;
 }
@@ -25,6 +27,7 @@ body {
   height: calc(100vh - ((10px + 2vmin) * 8));
 }
 
+/* Did we need credits? no. Is it awesome? yes. */
 #credits {
   position: absolute;
   left: 0;

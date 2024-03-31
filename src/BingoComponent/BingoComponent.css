@@ -1,7 +1,8 @@
 #bingo-container {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - ((10px + 2vmin) * 8));
+  /* This is needless complicated math, and not thought out well, but its dynamic and it works */
+  height: calc(100vh - ((10px + 2vmin) * 8)); 
   justify-content: center;
   align-items: center;
   margin-right: auto;
@@ -12,8 +13,10 @@
 
 #bingo-text {
     width: fit-content;
+    /* What? */
     font-size: calc(32px + 30 * ((100vw - 320px) / 2000));
     color: #afb9bd;
+    /* Why is this like this */
     border: calc(2px + 5 * ((100vw - 320px) / 2000)) solid #4ca1bb;
     border-radius: 10px;
     margin: auto;
@@ -138,6 +141,7 @@
     width: 100%;
 }
 
+/* Button Clicked effect */
 .clicked {
     -webkit-animation-name: growAnimation;
     -webkit-animation-duration: .2s;

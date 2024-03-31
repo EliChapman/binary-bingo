@@ -4,8 +4,11 @@ import NumberHistoryComponent from './NumberHistoryComponent/NumberHistoryCompon
 import { LocalStorageProvider } from './LocalStorageContext';
 import TimerComponent from './TimerComponent/TimerComponent';
 
+// App Component, the root of the application
 function App() {
   return (
+    // State provider, provides state to all components
+    // Yes it is incorrectly named, its function changed partway through creating it and I was too lazy to rename it
     <LocalStorageProvider >
       <div id="App">
         <header id='app-header' className="unselectable">
